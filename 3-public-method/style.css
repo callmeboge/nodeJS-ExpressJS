@@ -1,0 +1,83 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4e3ff;
+}
+
+.container {
+    width: 550px;
+    margin: 15px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}   
+
+nav {
+    background-color: #7c05f3;
+    color: #f4e3ff;
+    padding: 1rem 0;
+}
+
+nav .brand {
+    font: 15px/1.1 monospace;
+}
+
+nav .nav-link {
+    color: #f4e3ff;
+}
+
+form {
+    margin-top: 2rem;
+    padding: 2.5rem;
+    border-radius: 10px;
+    background-color: #fff;
+    flex-grow: 1;
+    box-shadow: 4px 4px #520b98;
+}
+
+form > input,
+form > button {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 4px 4px #520b98;
+}
+form > label {
+    font-size: 1.2em;
+}
+
+form > input {
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+form > button {
+    color: #f4e3ff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    border: 0px;
+    background-color: #7c05f3;
+}
+
+.result { width: 100%; }
+
+.result span{
+    margin:1rem .5rem;
+    display: inline-block;
+    font-size: 24px;
+    color: purple;
+    
+}
+
+.error {
+    text-align: center;
+    background-color: rgba(245, 73, 73, 0.504);
+    color: rgb(245, 73, 73);
+    border-color: rgb(245, 73, 73);
+    padding: .7rem;
+    margin:.7rem 0;
+}

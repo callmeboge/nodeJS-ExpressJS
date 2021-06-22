@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d89264;
+}
+
+.navbar {
+    max-width: 992px;
+    padding: 20px;
+    margin: 15px auto;
+    background-color: #fcf2f2;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-nav {
+    margin:0;
+    list-style-type: none;
+}
+.navbar-nav .nav-item {
+    display: inline-block;
+    margin-left: 2em;
+}
+
+.navbar-nav .nav-item a{
+    text-decoration: none;
+}

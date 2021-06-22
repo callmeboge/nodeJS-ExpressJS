@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+    <div class="container">
+        <div class="brand">HTTP Methods</div>
+        <div class="links">
+            <a href="/" class="nav-link">Form Example</a>
+            <a href="/js-post-example.html" class="nav-link">Javascript Example</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="container"> 
+            <form>
+                <h1>Javascript Form Submit</h1>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                <small class="form-error"></small>
+                <div class="error-alert"></div>
+                <button type="button" class="btn btn-primary">Login</button>
+            </form>
+        <div class="result"></div>
+    </div>
+</main>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var result = document.querySelector('.result')
+    //your code place here
+    var getDataPeople = async () => {
+
+        try {
+            var { data } = await axios.get('/api/v1/peoples')
+            var people = data.person.map( person => {
+                return `<span>${person.name}</span>`
+            })
+    
+            result.innerHTML = people.join('')
+        } catch (err) {
+            result.innerHTML = `<div class="error">${err}</div>`
+
+        }
+    }
+
+    getDataPeople();
+
+    document.querySelector('form').onsubmit = function(e){
+        console.log('prevent submit ')
+        event.preventDefault();
+    }
+    
+    document.querySelector('button').onclick = async function(e){
+        const username = document.querySelector('input#username')
+        const alert = document.querySelector('small')
+
+        username.focus()
+
+        try {
+            const { data } = await axios.post('/api/v1/peoples', { username :  username.value })
+            console.log(data)
+
+            const createSpan = document.createElement('span')
+
+            createSpan.textContent = `${data.person}`;
+
+            result.appendChild(createSpan)
+
+        }catch(error){
+            alert.textContent = error.response.data.msg
+        }
+
+        username.value = ''
+        
+    }
+</script>
+</body>
+</html>
